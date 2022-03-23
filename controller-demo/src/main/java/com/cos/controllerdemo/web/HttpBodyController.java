@@ -41,7 +41,7 @@ public class HttpBodyController {
 	@PostMapping("/body4")
 	public String applicationjsonToObject(@RequestBody User user) {
 		
-		log.info(user.getUsername());
+		log.info(user.getUsername()); //json data를 자바 Object로 바로 받을 수 있다
 		return "json 전송옴";
 	}
 }
