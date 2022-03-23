@@ -57,6 +57,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+		
 		<!-- 인증되지 않는 사용자는 localhost:8080/login 으로 리다이렉션 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

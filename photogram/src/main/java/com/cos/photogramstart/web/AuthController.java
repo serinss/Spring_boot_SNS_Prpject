@@ -46,6 +46,7 @@ public class AuthController {
 		//log.info(user.toString());
 		User userEntity = authService.회원가입(user);
 		System.out.println(userEntity);
+		
 		return "auth/signin"; //회원 가입 성공 시, 로그인 페이지 이동
 	}
 	
