@@ -13,6 +13,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		// super 삭제 -> 기존 시큐리티가 가지고 있는 기능이 다 비활성화 된다.
 		// 인증이 되지 않는 사용자는 모두 로그인 페이지로 이동하도록
+		http.csrf().disable(); //CSRF 토큰 검사 비활성화
 		http.authorizeRequests()
 			.antMatchers("/","/user/**","image/**","/subscribe/**","/comment/**").authenticated() //해당 url은 인증을 받아야 하고
 			.anyRequest().permitAll() //나머지 요청은 모두 허용한다
