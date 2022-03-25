@@ -24,7 +24,8 @@
                         <h1><img src="/images/logo.jpg" alt=""></h1>
                         
                         <!--로그인 인풋-->
-                        <form class="login__input" >
+                        <!-- select문은 원래 GET방식으로 확인하지만 로그인 아이디, 패스워드는 귀중한 정보이므로 POST -->
+                        <form class="login__input" action="/auth/signin" method="POST">
                             <input type="text" name="username" placeholder="유저네임" required="required" />
                             <input type="password" name="password" placeholder="비밀번호" required="required" />
                             <button>로그인</button>
