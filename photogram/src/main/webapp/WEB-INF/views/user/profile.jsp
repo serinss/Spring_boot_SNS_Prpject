@@ -33,7 +33,17 @@
 						<button class="cta" onclick="location.href='/image/upload'">사진등록</button>
 					</c:when>
 					<c:otherwise>
-						<button class="cta" onclick="toggleSubscribe(this)">구독하기</button>
+					
+						<c:choose>
+							<c:when test="${dto.subscribeState }">
+								<button class="cta blue" onclick="toggleSubscribe(${dto.user.id},this)">구독취소</button>
+							</c:when>
+							<c:otherwise>
+								<button class="cta" onclick="toggleSubscribe(${dto.user.id},this)">구독하기</button>
+							</c:otherwise>
+						</c:choose>
+					
+						
 					</c:otherwise>
 				</c:choose>
 				
@@ -47,7 +57,7 @@
 				<ul>
 					<li><a href=""> 게시물<span>${dto.imageCount}</span>
 					</a></li>
-					<li><a href="javascript:subscribeInfoModalOpen();"> 구독정보<span>2</span>
+					<li><a href="javascript:subscribeInfoModalOpen();"> 구독정보<span>${dto.subscribeCount }</span>
 					</a></li>
 				</ul>
 			</div>
@@ -89,6 +99,7 @@
 	</div>
 </section>
 
+
 <!--로그아웃, 회원정보변경 모달-->
 <div class="modal-info" onclick="modalInfo()">
 	<div class="modal">
@@ -98,6 +109,7 @@
 	</div>
 </div>
 <!--로그아웃, 회원정보변경 모달 end-->
+
 
 <!--프로필사진 바꾸기 모달-->
 <div class="modal-image" onclick="modalImage()">
@@ -110,6 +122,7 @@
 
 <!--프로필사진 바꾸기 모달end-->
 
+<!-- 구독 정보 모달 -->
 <div class="modal-subscribe">
 	<div class="subscribe">
 		<div class="subscribe-header">
@@ -149,7 +162,7 @@
 	</div>
 
 </div>
-
+<!-- 구독 정보 모달 end -->
 
 <script src="/js/profile.js"></script>
 
