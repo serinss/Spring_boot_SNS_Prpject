@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		// 인증이 되지 않는 사용자는 모두 로그인 페이지로 이동하도록
 		http.csrf().disable(); //CSRF 토큰 검사 비활성화
 		http.authorizeRequests()
-			.antMatchers("/","/user/**","image/**","/subscribe/**","/comment/**").authenticated() //해당 url은 인증을 받아야 하고
+			.antMatchers("/","/user/**","image/**","/subscribe/**","/comment/**","/api.**").authenticated() //해당 url은 인증을 받아야 하고
 			.anyRequest().permitAll() //나머지 요청은 모두 허용한다
 			.and()
 			.formLogin()
