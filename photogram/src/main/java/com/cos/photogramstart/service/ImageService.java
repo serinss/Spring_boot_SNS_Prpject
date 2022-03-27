@@ -7,8 +7,10 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cos.photogramstart.config.auth.PrincipalDetails;
+import com.cos.photogramstart.domain.image.Image;
 import com.cos.photogramstart.domain.image.ImageRepository;
 import com.cos.photogramstart.web.dto.image.ImageUploadDto;
 
@@ -23,10 +25,11 @@ public class ImageService {
 	@Value("${file.path}") //application.yml 에 등록한 file -> path 업로드 경로는 다양한 곳에서 사용되므로 꼭 하드코딩은 제외하자
 	private String uploadFoler;
 	
+	@Transactional
 	public void 사진업로드(ImageUploadDto imageUploadDto, PrincipalDetails principalDetails) {
 		UUID uuid = UUID.randomUUID();
 		String imageFileName = uuid+"-"+imageUploadDto.getFile().getOriginalFilename(); //1.jpg 오리지널 이름이 저장됨
-		System.out.println("이미지 파일 이름:"+imageFileName);
+		//System.out.println("이미지 파일 이름:"+imageFileName);
 		
 		Path imageFilePath = Paths.get(uploadFoler+imageFileName);
 		
@@ -36,5 +39,10 @@ public class ImageService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		//image 테이블에 저장
+		Image image = imageUploadDto.toEntity(imageFileName, principalDetails.getUser()); //de2c4d67-ebf1-4759-bddf-734660dcccb6-munzii.PNG
+		Image imageEntity = imageRepository.save(image);
+		
 	}
 }
