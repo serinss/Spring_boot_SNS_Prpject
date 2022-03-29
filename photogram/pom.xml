@@ -26,7 +26,7 @@
 			<version>2.4.4</version>
 		</dependency>
 	
-		<!-- qlrm -->
+		<!-- qlrm : DB에서 나온 결과를 자바 클래스에 매핑해준다-->
 		<dependency>
 			<groupId>org.qlrm</groupId>
 			<artifactId>qlrm</artifactId>
