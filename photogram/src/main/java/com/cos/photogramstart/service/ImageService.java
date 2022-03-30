@@ -25,14 +25,26 @@ public class ImageService {
 
 	private final ImageRepository imageRepository;
 	
+	@Transactional(readOnly = true)
+	public List<Image> 인기사진() {
+		return imageRepository.mPopular();
+	}
 	
 	@Transactional(readOnly = true) //영속성 컨텍스트 변경 감지를 해서, 더티체킹, flush(반영) X
 	public Page<Image> 이미지스토리(int principalId, Pageable pageable){
 		Page<Image> images = imageRepository.mStroy(principalId, pageable);
 		
+		//2(cos) 로그인 - 해당 이미지를 좋아요한 유저를 모두 가져온 후, 로그인 한 유저가 있는지를 확인
 		//images 에 좋아요 상태 담기
 		images.forEach((image)->{
 			
+			image.setLikeCount(image.getLikes().size());
+			
+			image.getLikes().forEach((like)->{
+				if(like.getUser().getId()==principalId) {
+					image.setLikeState(true);
+				}
+			});
 		});
 		return images;
 	}
