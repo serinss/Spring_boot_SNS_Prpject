@@ -15,6 +15,7 @@ import javax.persistence.UniqueConstraint;
 import com.cos.photogramstart.domain.image.Image;
 import com.cos.photogramstart.domain.subscribe.Subscribe;
 import com.cos.photogramstart.domain.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,24 +36,23 @@ import lombok.NoArgsConstructor;
 		}
 )
 public class Likes { //N
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@JoinColumn(name="imageId")
+	@JoinColumn(name = "imageId")
 	@ManyToOne
-	private Image iamge; //1
+	private Image image; // 1
 	
-	// 둘 다 무한참조가 일어나므로 오류가 날 것임!
-	@JoinColumn(name="userId")
+	@JsonIgnoreProperties({"images"})
+	@JoinColumn(name = "userId")
 	@ManyToOne
-	private User user; //1
-	
+	private User user; // 1
 	
 	private LocalDateTime createDate;
 	
-	@PrePersist //DB에 INSERT되기 직전에 실행
+	@PrePersist
 	public void createDate() {
 		this.createDate = LocalDateTime.now();
 	}
