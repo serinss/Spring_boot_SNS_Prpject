@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cos.photogramstart.config.auth.PrincipalDetails;
 import com.cos.photogramstart.domain.user.User;
@@ -34,6 +35,20 @@ public class UserApiController {
 	
 	private final UserService userService;
 	private final SubscribeService subscribeService;
+	
+	
+	@PutMapping("/api/user/{principalId}/profileImageUrl")
+	public ResponseEntity<?> profileImageUrlUpdate(@PathVariable int principalId, MultipartFile profileImageFile,
+			@AuthenticationPrincipal PrincipalDetails principalDetails){
+		//그냥 사진 업로드는 ajax를 안써서 Dto 안에 MultipartFile 타입으로 받았음
+		//지금은 사진만 받으면 되니까 해당 변수로 받음
+		//단! 이름은 input태그에 지정되어 있던 name 그대로 profileImageFile 설정해야함
+		
+		User userEntity = userService.회원프로필사진변경(principalId, profileImageFile);
+		principalDetails.setUser(userEntity); //세션 변경
+		return new ResponseEntity<>(new CMRespDto<>(1, "프로필 사진 변경 성공", null), HttpStatus.OK);
+	}
+	
 
 	@GetMapping("/api/user/{pageUserId}/subscribe")
 	public ResponseEntity<?> subscribeList(@PathVariable int pageUserId, @AuthenticationPrincipal PrincipalDetails principalDetails){
