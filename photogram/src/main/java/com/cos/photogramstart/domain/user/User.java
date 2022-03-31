@@ -33,7 +33,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //번호 증가 전략이 데이터베이스를 따라간다. (MySQL, Oracle등등)
 	private int id;
 
-	@Column(length=20, unique=true)
+	@Column(length=100, unique=true)
 	private String username;
 	@Column(nullable = false)
 	private String password;
@@ -65,5 +65,15 @@ public class User {
 	public void createDate() {
 		this.createDate = LocalDateTime.now();
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", name=" + name + ", website="
+				+ website + ", bio=" + bio + ", email=" + email + ", phone=" + phone + ", gender=" + gender
+				+ ", profileImageUrl=" + profileImageUrl + ", role=" + role +", createDate="
+				+ createDate + "]";
+	}
+	
+	
 	
 }
