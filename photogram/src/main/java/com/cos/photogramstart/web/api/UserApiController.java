@@ -66,22 +66,10 @@ public class UserApiController {
 			BindingResult bindingResult, //위치 중요!! 꼭 @Valid 다음 파라미터에 적어야 함
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		
-		if(bindingResult.hasErrors()) {
-			Map<String, String> errorMap = new HashMap<>();
-			
-			for(FieldError error: bindingResult.getFieldErrors()) { 
-				errorMap.put(error.getField(), error.getDefaultMessage()); //저장되어 있던 error를 Map에 담아보기
-			}
-			throw new CustomValidationApiException("유효성 검사 실패 ", errorMap); //강제로 발생시키기
-			//이 때, 우리는 기존에 쓰던 Exception을 그대로 발동시키느 것이 아니라
-			//새롭게 ApiException 클래스를 만들어서 발동시켜야 함
-			
-		}else {
 			//System.out.println(userUpdateDto);
 			User userEntity = userService.회원수정(id, userUpdateDto.toEntity());
 			principalDetails.setUser(userEntity); //세션값도 수정된 값으로 변경해놔야 화면에 반영됨 -> 패스워드 암호화 주의!!!
 			return new CMRespDto<>(1, "회원수정완료", userEntity);
-		}
 		
 	}
 }
