@@ -53,15 +53,6 @@ public class AuthController {
 		//Valid 통과 못하면 bindingResult에 다 모아준다
 		//@ResponseBody 파일이 아닌 데이터를 응답
 		
-		if(bindingResult.hasErrors()) {
-			Map<String, String> errorMap = new HashMap<>();
-			
-			for(FieldError error: bindingResult.getFieldErrors()) { 
-				errorMap.put(error.getField(), error.getDefaultMessage()); //저장되어 있던 error를 Map에 담아보기
-			}
-			throw new CustomValidationException("유효성 검사 실패 ", errorMap); //강제로 발생시키기
-			
-		}else {
 			//log.info(signupDto.toString());
 			//User <- SignupDto
 			User user = signupDto.toEntity();
@@ -69,9 +60,6 @@ public class AuthController {
 			User userEntity = authService.회원가입(user);
 			System.out.println(userEntity);
 			return "auth/signin";
-		}
-		
-		
 		
 	}
 	
