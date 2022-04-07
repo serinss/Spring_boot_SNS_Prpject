@@ -1,5 +1,3 @@
-# Spring_boot_SNS_Prpject
-
 # 🗳 Gather Thoughts 책 발췌 공유 SNS 플랫폼
 인스타그램 참조
 <br>
