@@ -8,21 +8,25 @@
 
 <br>
 
-## 📃 프로젝트 개요
+## 📃 프로젝트 배경 및 개요
 - instagram SNS 클론코딩을 활용하여 같은 SNS 기반의 독서 경험 공유 플랫폼 형성 목적
 - 좋은 글의 모음에는 좋은 사람들과 함께 해당 글에 대한 생각을 이야기할 수 있는 장으로서 활용될 수 있음
 <br>
 
-## 🛠 기술 스택
-- Java, Spring boot, Spring Security
-- JavaScript, HTML5, CSS3
-- MariaDB, SQL
+## 🛠 기술 스택 및 개발 환경
+- 언어 : Java11, JavaScript, HTML5, CSS3  
+
+- 프레임 워크 : Spring boot, Spring Security  
+
+- 빌드도구 : Maven  
+
+- DB : Hibernate/SpringJPA/MariaDB + SQL  
+
 <br>
 
-### 프로젝트 스케치
-
-### ERD
-## DB
+### 🧨Feature
+![feature](https://user-images.githubusercontent.com/96467897/162608301-07126ce6-5eeb-42dc-adf9-47143adc47b1.png)
+## 📦DB ERD
 ![entity](https://user-images.githubusercontent.com/96467897/162606761-03a0b957-51a0-4cfe-919f-f751c6cfe9e2.PNG)
 
 |Table|Column|설명|
@@ -36,13 +40,13 @@
 
 
 ## 주요기능
-- 
+- 회원가입을 통한 로그인 + 기타 페이스북 로그인
+- 발췌 이미지와 함께 공유하고 싶은 글을 작성하여 업로드 - 팔로워들과 댓글로 이야기를 나눌 수 있음
+- 인기 있는 포스팅을 한번에 모아서 보기
 <br>
-<br>
-
-## 🧨 Trouble Shooting
 
 
-
-## 💊 보완할 점
-- 
+## 💊 추가할 수 있는 기능
+- 좋아하는 팔로워의 글을 북마크하기 -> 내가 올린 글, 북마크한 글 분화하여 볼 수 있는 페이지 생성
+- 1:1 채팅 서비스
+  - 리얼타임 베이스인 MongoDB를 이용한 채팅 서버 활성화
