@@ -1,7 +1,7 @@
 # 🗳 Gather Thoughts 책 발췌 공유 SNS 플랫폼
 스프링부트 인스타그램 강의 [메타코딩] 참조
 <br>
-![gather_main-min](https://user-images.githubusercontent.com/96467897/162605751-6e8bc321-e1ac-4979-bc1a-f992ec3dc395.gif)
+![gather_main-min (1)](https://user-images.githubusercontent.com/96467897/162605849-72dee4b5-1726-40a3-be3d-aa50945191b8.gif)
 
 ## 👨‍👨‍👧 개인 프로젝트
 - 김세린
