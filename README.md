@@ -1,4 +1,4 @@
-# 🗳 Gather Thoughts 책 발췌 공유 SNS 플랫폼
+# 🗳 Gather Thoughts 도서 공유 플랫폼
 스프링부트 인스타그램 강의 [메타코딩] 참조 <br>
 ![gather_main-min (1)](https://user-images.githubusercontent.com/96467897/162605893-eb1b3094-6fec-4068-b827-dd0ffaade753.gif)
 <br>
