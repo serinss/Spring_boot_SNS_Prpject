@@ -11,7 +11,6 @@
 let principalId = $("#principalId").val();
 
 // (1) 스토리 로드하기
-
 let page=0;
 
 function storyLoad() {
@@ -229,10 +228,3 @@ function deleteComment(commentId) {
 		console.log("오류 ",error)
 	});
 }
-
-
-
-
-
-
-
